@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .not-found-page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 20px;
+      }
+
+      .not-found-card {
+        text-align: center;
+        max-width: 720px;
+        width: 100%;
+      }
+
+      .not-found-image {
+        display: block;
+        max-width: 100%;
+        width: 420px;
+        margin: 0 auto 24px;
+        height: auto;
+      }
+
+      .not-found-title {
+        margin-bottom: 10px;
+      }
+
+      .not-found-text {
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      .not-found-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="not-found-page">
+      <section class="card not-found-card">
+        <img
+          class="not-found-image"
+          src="404.png"
+          alt="404 illustration"
+        />
+
+        <h1 class="not-found-title">Page Not Found</h1>
+        <p class="not-found-text">
+          The page you are looking for does not exist or may have been moved.
+        </p>
+
+        <div class="not-found-actions">
+          <a class="button" href="index.html">Go Home</a>
+          <a class="button secondary" href="support.html">Contact Support</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
