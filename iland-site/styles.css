@@ -1,4 +1,3 @@
-
 :root {
   --bg: #f6f8fb;
   --card: #ffffff;
@@ -38,6 +37,27 @@ body {
 
 .hero {
   text-align: center;
+}
+
+.site-logo {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.page-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 h1 {
@@ -119,5 +139,19 @@ ul {
 
   .button {
     text-align: center;
+  }
+
+  .page-header {
+    align-items: flex-start;
+  }
+
+  .site-logo {
+    width: 76px;
+    height: 76px;
+  }
+
+  .page-logo {
+    width: 48px;
+    height: 48px;
   }
 }
