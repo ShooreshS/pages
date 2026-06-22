@@ -130,6 +130,23 @@ ul {
   margin-bottom: 6px;
 }
 
+.common-issue summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.common-issue summary:hover {
+  text-decoration: underline;
+}
+
+.issue-details {
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f5f7fb;
+  line-height: 1.5;
+}
+
 @media (max-width: 640px) {
   .card {
     padding: 24px 18px;
