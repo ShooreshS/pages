@@ -52,6 +52,14 @@
       color: var(--accent);
     }
 
+    h3 {
+      margin-top: 24px;
+      margin-bottom: 4px;
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
     p, li {
       font-size: 1rem;
     }
@@ -72,6 +80,14 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    /* TEMPORARY: highlights unresolved placeholders. Delete this rule,
+       and every <span class="todo"> below, before publishing. */
+    .todo {
+      background: #fef3c7;
+      border-bottom: 1px dashed #b45309;
+      padding: 0 2px;
     }
 
     .footer {
@@ -96,14 +112,14 @@
     <div class="card">
       <h1>Privacy Policy for CivicOS</h1>
       <p class="meta">
-        <strong>Effective date:</strong> 2030-01-01<br />
-        <strong>Last updated:</strong>  2026-03-01
+        <strong>Effective date:</strong> 2026-07-20<br />
+        <strong>Last updated:</strong> 2026-07-20
       </p>
 
       <p>
-        CivicOS values your privacy. This Privacy Policy
-        explains how CivicOS handles information when you use the CivicOS mobile
-        application and related services.
+        CivicOS values your privacy. This Privacy Policy explains how CivicOS
+        handles information when you use the CivicOS mobile application and
+        related services.
       </p>
 
       <h2>1. Overview</h2>
@@ -114,186 +130,449 @@
         and participation features.
       </p>
       <p>
-        Every user's information is processed and stored on the device. Our goal is to minimize data collection and protect sensitive information
-        through privacy-focused design.
+        Identity verification happens entirely on your device. Information you
+        choose to publish, and a single non-reversible identifier, are sent to our
+        servers so that participation features can work. Sections 3 and 4 set out
+        exactly which information stays on your device and which does not.
       </p>
 
-      <h2>2. Information We Process</h2>
-      <p>Depending on the features you use, CivicOS may process the following categories of information <strong>on your device</strong>:</p>
+      <h2>2. Who We Are</h2>
+      <p>
+        <strong>Code iland AB</strong>
+        (organisationsnummer 559393-4424), Stockholm,
+        Sweden, is the data controller responsible for the personal data described
+        in this policy. You can reach us using the details in section 19.
+      </p>
+
+      <h2>3. Information Processed on Your Device</h2>
+      <p>
+        Depending on the features you use, CivicOS processes the following
+        categories of information <strong>on your device</strong>:
+      </p>
       <ul>
         <li>Identity document information you choose to scan or provide</li>
         <li>Passport MRZ data</li>
         <li>NFC passport chip data from supported electronic passports</li>
-        <li>Face image or face-related capture data used during identity-related flows</li>
+        <li>The face portrait image contained in your identity document</li>
+        <li>A 3D face scan captured during verification</li>
         <li>App settings and preferences</li>
-        <li>Identity status and profile-related information generated through your use of the app</li>
+        <li>Your verification status</li>
+      </ul>
+      <p>
+        All identity verification data — document images, MRZ data, NFC chip data,
+        and the face portrait image from the document — is processed locally on
+        your device and used solely for eligibility verification. It is not stored
+        by CivicOS, is never transmitted to our servers, and is deleted from your
+        device once verification completes.
+      </p>
+      <p>
+        One item is retained on your device after verification: the 3D face scan
+        captured during the process. It is stored locally, encrypted, and used for
+        a single purpose — to represent you visually in the app while you are
+        signed in. It is not transmitted, not shared, and not used for any further
+        identification or matching. Signing out of the app removes it.
+      </p>
+      <p>
+        On supported devices, hardware-backed security mechanisms may be used,
+        including the Secure Enclave on Apple devices and the Android Keystore, to
+        store app-related secrets. Your identity information is not stored in these
+        mechanisms.
+      </p>
+
+      <h2>4. What Leaves Your Device</h2>
+      <p>
+        Some information is used only on your device and never reaches our servers.
+        Other information is sent to us so the service can function. This section
+        explains which is which.
+      </p>
+
+      <h3>4.1 Never transmitted to us</h3>
+      <p>
+        The following is used locally during identity verification and is not
+        transmitted to us:
+      </p>
+      <ul>
+        <li>Identity documents you scan</li>
+        <li>
+          Information extracted from those documents, including MRZ data and NFC
+          chip data
+        </li>
+        <li>The face portrait image from your document</li>
+        <li>The 3D face scan captured during verification</li>
       </ul>
 
-      <h2>3. On-Device Processing and Storage</h2>
+      <h3>4.2 The unique verification identifier</h3>
       <p>
-        All identity verification data — document images, MRZ data, NFC chip data, and face images — is processed locally on the device and used solely for eligibility verification. It is not stored by CivicOS, is never transmitted to our backend, and is deleted from the device once verification completes.
-        
-        On supported 
-        devices, hardware-backed security mechanisms may be used, including
-        Secure Enclave (Apple) Keystore (Android) to store app-related secrets (not the user's identity information).
+        When verification succeeds, your device derives a single value from your
+        identity information using a keyed one-way function (HMAC) and sends only
+        that value to us. This identifier:
+      </p>
+      <ul>
+        <li>
+          cannot be reversed to recover your identity document, your name, or any
+          other detail it was derived from;
+        </li>
+        <li>
+          tells us nothing about who you are, your nationality, your age, or your
+          document type;
+        </li>
+        <li>
+          exists for one purpose only — to ensure that each verified person can
+          hold only one verified account and can participate only once in a given
+          poll.
+        </li>
+      </ul>
+      <p>
+        Because the same person always produces the same identifier, it is a
+        persistent pseudonymous identifier. It is linked to your activity within
+        CivicOS, and we treat it as personal data under applicable data protection
+        law even though it does not reveal your real-world identity.
+      </p>
+
+      <h3>4.3 Information you enter or send us</h3>
+      <ul>
+        <li>Profile or preference information you enter</li>
+        <li>
+          Content you post, including polls, comments, and other contributions
+        </li>
+        <li>Reports you submit about other users' content</li>
+        <li>Support requests or communications you send to us</li>
+      </ul>
+
+      <h3>4.4 Technical information</h3>
+      <p>
+        Like any internet service, our servers automatically receive certain
+        technical information when your app communicates with them, including your
+        IP address, the time of the request, and basic device and app version
+        information. We use this only to operate the service, diagnose faults, and
+        protect against abuse.
       </p>
       <p>
-        One item is retained on your device after verification: the 3D face scan captured during the process. It is stored locally, encrypted, and used for a single purpose — to represent you visually in the app while you are signed in. It is not transmitted, not shared, and not used for any further identification or matching. Signing out of the app removes it.
+        The app also uses the platform's app attestation services
+        (App Attest on iOS and Play Integrity on Android)
+        to confirm that requests come from a genuine, unmodified copy of CivicOS.
+        This check involves Apple or Google and does not disclose your identity to
+        them.
       </p>
-
-      <h2>4. Information You Provide, and What Leaves Your Device</h2>
-
-<p>Some information is used only on your device and never reaches our
-servers. Other information is sent to us so the service can function.
-This section explains which is which.</p>
-
-<h3>4.1 Processed only on your device</h3>
-<p>The following is used locally during identity verification and is not
-transmitted to us:</p>
-<ul>
-  <li>Identity documents you scan</li>
-  <li>Information extracted from those documents, including MRZ data
-      and NFC chip data</li>
-  <li>The face image captured during verification</li>
-</ul>
-
-<h3>4.2 The unique verification identifier</h3>
-<p>When verification succeeds, your device derives a single value from
-your identity information using a keyed one-way function (HMAC) and
-sends only that value to us. This identifier:</p>
-<ul>
-  <li>cannot be reversed to recover your identity document, your name,
-      or any other detail it was derived from;</li>
-  <li>tells us nothing about who you are, your nationality, your age,
-      or your document type;</li>
-  <li>exists for one purpose only — to ensure that each verified person
-      can hold only one verified account and can participate only once
-      in a given poll.</li>
-</ul>
-<p>Because the same person always produces the same identifier, it is a
-persistent pseudonymous identifier. It is linked to your activity within
-CivicOS, and we treat it as personal data under applicable data
-protection law even though it does not reveal your real-world identity.</p>
-
-<h3>4.3 Information you enter or send us</h3>
-<ul>
-  <li>Profile or preference information you enter</li>
-  <li>Content you post, including polls, comments, and other
-      contributions</li>
-  <li>Support requests or communications you send to us</li>
-</ul>
 
       <h2>5. Permissions</h2>
-      <p>CivicOS may request access to the following device capabilities when needed for a feature:</p>
-      <ul>
-        <li><strong>Camera</strong> for document scanning, MRZ capture, face capture, and related features</li>
-        <li><strong>NFC</strong> for reading compatible passport chip data</li>
-        <li><strong>Location</strong> for map-based or location-aware features, where available</li>
-        <li><strong>Photo Library</strong> only if a feature requires access to images you choose to provide</li>
-      </ul>
-      <p>These permissions are requested in context, when relevant to the feature being used.</p>
-
-      <h2>6. How We Use Information</h2>
-      <p>We use information processed by the app to:</p>
-      <ul>
-        <li>Provide identity onboarding features</li>
-        <li>Scan and review identity information</li>
-        <li>Support verified participation and voting-related features</li>
-        <li>Maintain app security, integrity, and reliability</li>
-        <li>Respond to support requests and troubleshoot issues</li>
-      </ul>
-
-      <h2>7. Data Sharing</h2>
-      <p>We do not have access to your personal information.</p>
-
-      <h2>8. Data Retention</h2>
       <p>
-        Information stored locally on your device remains there until you delete it,
-        remove the app, clear it through app functionality, or otherwise remove it
-        from your device, subject to platform behavior.
+        CivicOS requests access to the following device capabilities. Each is
+        requested in context, at the point where the relevant feature is used, and
+        each can be declined.
+      </p>
+      <ul>
+        <li>
+          <strong>Camera</strong> — required for document scanning, MRZ capture,
+          and face capture during verification. The camera is activated only when
+          you start a verification flow, and no photo or video is saved to your
+          photo library.
+        </li>
+        <li>
+          <strong>NFC</strong> — optional. Used only when you choose to read the
+          chip of a supported passport or national ID card, and only for the
+          duration of that read.
+        </li>
+        <li>
+          <strong>Location</strong> — optional. Used only for location-based
+          participation features; the app is fully usable without it. When location
+          is used, the app applies a random offset before transmission, so we
+          receive only a coarse, approximate position. Location is never used for
+          tracking, profiling, or advertising.
+        </li>
+        <li>
+         <strong>Photo Library</strong> — optional. Used only if you choose to
+            select an existing image from your device.
+        </li>
+      </ul>
+
+      <h2>6. How We Use Information, and Our Legal Bases</h2>
+      <p>
+        Under the EU General Data Protection Regulation (GDPR) we must have a legal
+        basis for each purpose for which we process personal data. Our purposes and
+        bases are:
+      </p>
+      <ul>
+        <li>
+          <strong>Verifying your eligibility to participate</strong> — performed on
+          your device. Legal basis: your consent, and for the 3D face scan your
+          explicit consent under Article 9(2)(a) (see section 7).
+        </li>
+        <li>
+          <strong>Ensuring one account and one vote per verified person</strong>,
+          using the identifier described in section 4.2. Legal basis: performance of
+          our contract with you, and our legitimate interest in preventing
+          duplicate accounts and manipulation of polls.
+        </li>
+        <li>
+          <strong>Providing participation features</strong>, including publishing
+          the polls, comments, and contributions you create. Legal basis:
+          performance of our contract with you.
+        </li>
+        <li>
+          <strong>Moderating content</strong> and responding to reports. Legal
+          basis: our legitimate interest in maintaining a safe service, and
+          compliance with our legal obligations.
+        </li>
+        <li>
+          <strong>Maintaining security, integrity, and reliability</strong>,
+          including abuse prevention and fault diagnosis. Legal basis: our
+          legitimate interest in operating a secure service.
+        </li>
+        <li>
+          <strong>Providing location-based features</strong>, where you enable
+          them. Legal basis: your consent.
+        </li>
+        <li>
+          <strong>Responding to support requests</strong>. Legal basis: performance
+          of our contract with you, and our legitimate interest in supporting our
+          users.
+        </li>
+      </ul>
+      <p>
+        Where we rely on consent, you may withdraw it at any time. Withdrawal does
+        not affect processing carried out before withdrawal.
+      </p>
+
+      <h2>7. Biometric Data</h2>
+      <p>
+        The face capture used during verification, and the 3D face scan retained on
+        your device, are biometric data used to confirm that the identity document
+        you present belongs to you. Under GDPR this is a special category of
+        personal data, and we process it only on the basis of your
+        <strong>explicit consent</strong> (Article 9(2)(a)).
       </p>
       <p>
-        Please note that some secure storage mechanisms on certain platforms may
-        behave differently from ordinary app storage.
+        You are asked for this consent before face capture begins. You can decline,
+        in which case verification cannot be completed and you will not be able to
+        use features that require a verified account. You can withdraw consent at
+        any time by simply signing out in Settings menu, which deletes the retained 3D face scan
+        from your device.
+      </p>
+      <p>
+        This biometric data is never transmitted to us, is never compared against
+        any database, is not used to identify you among other people, and is not
+        shared with anyone.
       </p>
 
-      <h2>9. Security</h2>
+      <h2>8. Content Moderation and Automated Processing</h2>
       <p>
-        We use reasonable technical and organizational measures designed to protect
+        Content published in CivicOS passes through two moderation layers. An
+        automated system first flags content that may be inappropriate. A human
+        administrator then reviews flagged content and approves it, requests
+        changes, or rejects it. Moderation decisions are therefore not made by
+        automated means alone.
+      </p>
+      <p>
+        Administrators can access content that has been flagged or reported. They
+        see the content and the pseudonymous identifier associated with it; they do
+        not have access to your identity documents or biometric data, which never
+        leave your device.
+      </p>
+      <p>
+        Eligibility verification itself is automated: your device determines whether
+        your document meets the eligibility criteria. If you believe an outcome is
+        incorrect, you can contact us using the details in section 19 and ask for
+        it to be reviewed by a person.
+      </p>
+
+      <h2>9. Data Sharing</h2>
+      <p>
+        We do not sell your personal data, and we do not share it with advertisers,
+        data brokers, or for third-party marketing purposes.
+      </p>
+      <p>We share data only in the following circumstances:</p>
+      <ul>
+        <li>
+          <strong>Service providers acting on our instructions.</strong> Our
+          application and database are hosted by
+          AWS, which processes data on our
+          behalf under a data processing agreement.
+        </li>
+        <li>
+          <strong>Platform providers.</strong> Apple and Google process app
+          attestation and, where used, push notification delivery, as described in
+          section 4.4.
+        </li>
+        <li>
+          <strong>Other users.</strong> Content you choose to publish is visible to
+          other users of CivicOS, together with your pseudonymous profile.
+        </li>
+        <li>
+          <strong>Legal requirements.</strong> We may disclose information where we
+          are legally required to do so, or where necessary to establish, exercise,
+          or defend legal claims.
+        </li>
+      </ul>
+      <p>
+        We do not have access to your identity documents, the data extracted from
+        them, or your biometric data. That information never reaches us and
+        therefore cannot be shared or disclosed by us.
+      </p>
+
+      <h2>10. Data Retention</h2>
+      <p><strong>On your device.</strong></p>
+      <ul>
+        <li>
+          Identity documents, MRZ data, NFC chip data, and the document portrait
+          image are deleted as soon as verification completes.
+        </li>
+        <li>
+          The 3D face scan is retained until you sign out, delete your verification,
+          or remove the app.
+        </li>
+        <li>
+          Settings, preferences, and verification status remain until you remove
+          them or uninstall the app.
+        </li>
+      </ul>
+      <p><strong>On our servers.</strong></p>
+      <ul>
+        <li>
+          The unique verification identifier is retained for as long as your account
+          exists and is deleted immediately on account deletion. Account deletion removes all of your votes.
+        </li>
+        <li>
+          Content you publish is retained until you delete it or your account is
+          deleted.
+        </li>
+        <li>
+          Moderation records are retained for 14 days after a decision.
+        </li>
+        <li>
+          Server logs, including IP addresses, are retained for 7 days.
+        </li>
+        <li>
+          Support correspondence is retained for 7 days.
+        </li>
+      </ul>
+
+      <h2>11. Deleting Your Data</h2>
+      <p>
+        You can delete your CivicOS account from within the app at
+         Profile → Settings → Delete account.
+      </p>
+      <p>
+        Deleting your account removes your published content, your profile, and your
+        verification identifier from our servers, subject to the retention periods
+        in section 10. Data held on your device is removed by deleting your
+        verification in the app or uninstalling it.
+      </p>
+      <p>
+        Because your identity is held only as a non-reversible identifier, we cannot
+        locate your account from your name or your document. Deletion requests must
+        therefore be made from within the app, or accompanied by information that
+        lets us identify the account.
+      </p>
+
+      <h2>12. Security</h2>
+      <p>
+        We use appropriate technical and organizational measures designed to protect
         information and reduce unauthorized access, disclosure, misuse, or loss.
+        These include:
       </p>
-      <p>Security measures may include:</p>
       <ul>
-        <li>On-device encryption</li>
+        <li>Processing identity data only on your device</li>
+        <li>On-device encryption of retained sensitive data</li>
         <li>User-specific keys</li>
         <li>Hardware-backed key storage where supported</li>
-        <li>Least-privilege access to device capabilities</li>
+        <li>Encryption of data in transit</li>
+        <li>Least-privilege access to device capabilities and to our systems</li>
         <li>Secure coding and storage practices</li>
       </ul>
       <p>
         No method of storage, processing, or transmission is completely secure, and
-        we cannot guarantee absolute security.
+        we cannot guarantee absolute security. If a personal data breach occurs that
+        is likely to result in a high risk to your rights and freedoms, we will
+        notify you and the relevant supervisory authority as required by law.
       </p>
 
-      <h2>10. Children’s Privacy</h2>
+      <h2>13. International Transfers</h2>
       <p>
-        CivicOS is not intended for children under the age of 16,
-        and we do not knowingly collect personal information from children in violation
-        of applicable law.
-      </p>
-      <p>
-        If you believe a child has provided personal information in violation of this
-        policy, <a src="support.html">please contact us</a>.
+        We are established in Sweden. Our servers are located in the EU and the USA. Where personal data is transferred outside the European
+        Economic Area, we rely on the European Commission Standard
+        Contractual Clauses, an adequacy decision, or the EU–US Data Privacy
+        Framework to ensure an appropriate level of protection. You can
+        request further information about these safeguards using the contact details
+        in section 19.
       </p>
 
-      <h2>11. Your Rights</h2>
-      <p>Depending on your location, you may have rights regarding your personal information, including the right to:</p>
+      <h2>14. Children's Privacy</h2>
+      <p>
+        CivicOS is not intended for people under the age of
+        13, and we do not knowingly collect personal
+        information from them.
+      </p>
+      <p>
+        If you believe a child has provided personal information in violation of
+        this policy,
+        <a href="https://iland.codeiland.com/support.html">please contact us</a>
+        and we will delete it.
+      </p>
+
+      <h2>15. Your Rights</h2>
+      <p>
+        If you are in the European Economic Area or the United Kingdom, you have the
+        right to:
+      </p>
       <ul>
-        <li>Access information about how your data is handled</li>
+        <li>Access the personal data we hold about you</li>
         <li>Request correction of inaccurate personal data</li>
-        <li>Request deletion of personal data</li>
+        <li>Request deletion of your personal data</li>
         <li>Object to or restrict certain processing</li>
+        <li>Receive your data in a portable format</li>
         <li>Withdraw consent where processing is based on consent</li>
         <li>Lodge a complaint with a data protection authority</li>
       </ul>
-
-      <h2>12. International Users</h2>
       <p>
-        If CivicOS is made available in multiple countries, your information may be
-        subject to the laws of jurisdictions different from your own.
-      </p>
-
-      <h2>13. Third-Party Services</h2>
-      <p>
-        The app may rely on standard and well-known third-party libraries, device
-        frameworks, and service providers to support core functionality, security,
-        and reliability.
+        To exercise any of these rights, contact us at
+        <a href="mailto:info@codeiland.com">info@codeiland.com</a>. We will respond
+        within one month, and will tell you if we need longer because a request is
+        complex. Note the limitation described in section 11: because we hold no
+        identifying information about you, we may need you to make the request from
+        within the app so that we can locate the correct account.
       </p>
       <p>
-        To the best of our knowledge and based on their documented behavior, these
-        components do not collect personal user information for their own independent
-        purposes through the app’s intended use. We make reasonable efforts to choose
-        privacy-conscious technologies and to minimize unnecessary data exposure.
+        If you are in Sweden, you can complain to Integritetsskyddsmyndigheten
+        (IMY), the Swedish Authority for Privacy Protection. If you are elsewhere in
+        the EEA or the UK, you can complain to your local supervisory authority.
       </p>
 
-      <h2>14. Changes to This Privacy Policy</h2>
+      <h2>16. Users Outside the European Economic Area</h2>
+      <p>
+        CivicOS may be available in countries outside the EEA. Wherever you are, we
+        apply the practices described in this policy. Depending on where you live,
+        you may have additional rights under local law; contact us if you wish to
+        exercise them. We do not sell personal data as that term is defined under
+        United States state privacy laws.
+      </p>
+
+      <h2>17. Third-Party Services</h2>
+      <p>
+        CivicOS currently works with no third parties.
+      </p>
+      <p>
+        We do not use third-party analytics or advertising SDKs.
+      </p>
+
+      <h2>18. Changes to This Privacy Policy</h2>
       <p>
         We may update this Privacy Policy from time to time. If we make material
-        changes, we will update the “Last updated” date and, where required, provide
-        additional notice.
+        changes, we will update the "Last updated" date above and, where required,
+        notify you in the app before the changes take effect.
       </p>
 
-      <h2>15. Contact Us</h2>
+      <h2>19. Contact Us</h2>
       <p>
         If you have questions about this Privacy Policy or our privacy practices,
         please contact us at:
       </p>
       <p>
-        <strong>Codiland AB</strong><br />
+        <strong>Code iland AB</strong><br />
         Post Box 145361<br />
         Stockholm, Sweden<br />
-        info@codeiland.com<br />
-        iland.codeiland.com/support
+        <a href="mailto:info@codeiland.com">info@codeiland.com</a><br />
+        <a href="https://iland.codeiland.com/support.html">iland.codeiland.com/support</a>
       </p>
 
       <div class="footer">
