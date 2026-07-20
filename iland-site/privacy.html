@@ -131,24 +131,57 @@
 
       <h2>3. On-Device Processing and Storage</h2>
       <p>
-        Core identity data is intended to remain on your device. Sensitive locally
-        stored identity data is encrypted using user-specific keys. On supported 
+        All identity verification data — document images, MRZ data, NFC chip data, and face images — is processed locally on the device and used solely for eligibility verification. It is not stored by CivicOS, is never transmitted to our backend, and is deleted from the device once verification completes.
+        
+        On supported 
         devices, hardware-backed security mechanisms may be used, including
-        Secure Enclave (Apple) Keystore (Android), where applicable.
+        Secure Enclave (Apple) Keystore (Android) to store app-related secrets (not the user's identity information).
       </p>
       <p>
-        We aim to process and store sensitive identity information locally whenever
-        possible.
+        One item is retained on your device after verification: the 3D face scan captured during the process. It is stored locally, encrypted, and used for a single purpose — to represent you visually in the app while you are signed in. It is not transmitted, not shared, and not used for any further identification or matching. Signing out of the app removes it.
       </p>
 
-      <h2>4. Information We Collect Directly From You</h2>
-      <p>We may collect information that you choose to provide through the app, such as:</p>
-      <ul>
-        <li>Identity documents you scan</li>
-        <li>Information extracted from compatible documents</li>
-        <li>Profile or preference information you enter</li>
-        <li>Support requests or communications you send to us</li>
-      </ul>
+      <h2>4. Information You Provide, and What Leaves Your Device</h2>
+
+<p>Some information is used only on your device and never reaches our
+servers. Other information is sent to us so the service can function.
+This section explains which is which.</p>
+
+<h3>4.1 Processed only on your device</h3>
+<p>The following is used locally during identity verification and is not
+transmitted to us:</p>
+<ul>
+  <li>Identity documents you scan</li>
+  <li>Information extracted from those documents, including MRZ data
+      and NFC chip data</li>
+  <li>The face image captured during verification</li>
+</ul>
+
+<h3>4.2 The unique verification identifier</h3>
+<p>When verification succeeds, your device derives a single value from
+your identity information using a keyed one-way function (HMAC) and
+sends only that value to us. This identifier:</p>
+<ul>
+  <li>cannot be reversed to recover your identity document, your name,
+      or any other detail it was derived from;</li>
+  <li>tells us nothing about who you are, your nationality, your age,
+      or your document type;</li>
+  <li>exists for one purpose only — to ensure that each verified person
+      can hold only one verified account and can participate only once
+      in a given poll.</li>
+</ul>
+<p>Because the same person always produces the same identifier, it is a
+persistent pseudonymous identifier. It is linked to your activity within
+CivicOS, and we treat it as personal data under applicable data
+protection law even though it does not reveal your real-world identity.</p>
+
+<h3>4.3 Information you enter or send us</h3>
+<ul>
+  <li>Profile or preference information you enter</li>
+  <li>Content you post, including polls, comments, and other
+      contributions</li>
+  <li>Support requests or communications you send to us</li>
+</ul>
 
       <h2>5. Permissions</h2>
       <p>CivicOS may request access to the following device capabilities when needed for a feature:</p>
